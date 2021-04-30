@@ -4,12 +4,16 @@ const itify = require('./itify')
 // can we make "pickTests" async?
 const onFilePreprocessor = (config, pickTests) => {
   const options = {
-	  typescript: require.resolve('typescript'),
+    typescript: require.resolve('typescript'),
     browserifyOptions: {
-	    extensions: ['.js', '.ts'],
+      extensions: ['.js', '.ts'],
       transform: [
-          ...browserify.defaultOptions.browserifyOptions.transform,
-	      itify(config, pickTests),
+        ...browserify.defaultOptions.browserifyOptions.transform,
+        itify(config, pickTests),
+      ],
+      paths: [
+        'cypress/fixtures',
+        'cypress'
       ]
     }
   }
