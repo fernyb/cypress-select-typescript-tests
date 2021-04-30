@@ -9,14 +9,18 @@ const tsspecParser = require('./tsspec-parser');
 const formatTestNames = foundTests =>
   foundTests.join('\n') + '\n'
 
-function process (config, pickTests, filename, source) {
-	// console.log('filename', filename);
+function process(config, pickTests, filename, source) {
+  // console.log('filename', filename);
   // console.log('---source')
   // console.log(source)
-	// console.log('Cypress config %O', config);
+  // console.log('Cypress config %O', config);
   // debug('Cypress config %O', config)
 
-  const foundTests = filename.endsWith('.ts') ? tsspecParser.findTests(source, filename) : specParser.findTests(source)
+  if (!filename.endsWith('.ts')) {
+    return source;
+  }
+
+  const foundTests = tsspecParser.findTests(source, filename);
   if (!foundTests.length) {
     return source
   }
@@ -31,28 +35,28 @@ function process (config, pickTests, filename, source) {
   debug(formatTestNames(testNamesToRun))
 
   const processed = filename.endsWith('.ts') ? tsspecParser.skipTests(source, filename, testNamesToRun) : specParser.skipTests(source, testNamesToRun)
-	if (filename.includes('spec')) {
-		console.log('filename', filename);
-		console.log('---processed');
-		console.log(processed);
-	}
+  if (filename.includes('spec')) {
+    console.log('filename', filename);
+    console.log('---processed');
+    console.log(processed);
+  }
 
   return processed
 }
 
 // good example of a simple Browserify transform is
 // https://github.com/thlorenz/varify
-module.exports = function itify (config, pickTests) {
-  return function itifyTransform (filename) {
+module.exports = function itify(config, pickTests) {
+  return function itifyTransform(filename) {
     debug('file %s', filename)
 
     let data = ''
 
-    function ondata (buf) {
+    function ondata(buf) {
       data += buf
     }
 
-    function onend () {
+    function onend() {
       this.queue(process(config, pickTests, filename, data))
       this.emit('end')
     }

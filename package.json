@@ -17,15 +17,15 @@
   "files": [
     "src",
     "grep.js",
-		"precypress.js"
+    "precypress.js"
   ],
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
-	"contributors": [
-		{
-			"name": "Richard Vowles",
-			"email": "richard@bluetrainsoftware.com"
-		}
-	],
+  "contributors": [
+    {
+      "name": "Richard Vowles",
+      "email": "richard@bluetrainsoftware.com"
+    }
+  ],
   "license": "MIT",
   "peerDependencies": {
     "cypress": "4"
@@ -37,7 +37,7 @@
     "falafel": "2.2.4",
     "pluralize": "8.0.0",
     "through": "2.3.8",
-		"typescript": "3.9.7"
+    "typescript": "3.9.7"
   },
   "devDependencies": {
     "cypress": "4.11.0",
@@ -50,6 +50,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rvowles/cypress-select-tests.git"
+    "url": "https://github.com/fbarajas12/cypress-select-tests.git"
   }
 }
