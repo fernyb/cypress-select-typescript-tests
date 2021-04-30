@@ -13,6 +13,7 @@ const onFilePreprocessor = (config, pickTests) => {
       ],
       paths: [
         'Cypress/Fixtures',
+        'Cypress/Support',
         'Cypress'
       ]
     }
