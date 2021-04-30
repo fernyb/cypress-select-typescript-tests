@@ -12,8 +12,8 @@ const onFilePreprocessor = (config, pickTests) => {
         itify(config, pickTests),
       ],
       paths: [
-        'cypress/fixtures',
-        'cypress'
+        'Cypress/Fixtures',
+        'Cypress'
       ]
     }
   }
