@@ -192,43 +192,43 @@ it('combines custom browserify with grep picker', () => {
 })
 
 it('limits to a single spec running when using the prefilter', () => {
-	return prefilter(['--env', 'grep-filter=spec.js,grep=does A'])
-		.then(() => {
-			cypress
-				.run({
-					config: {
-						video: false,
-						videoUploadOnPasses: false,
-						pluginsFile: path.join(__dirname, 'plugin-does-grep.js')
-					},
-					configFile: 'cypress-grep.json'
-				})
-				.then(R.prop('runs'))
-				.then(runs => {
-					console.log(runs);
-					la(runs.length === 1, 'expected one spec', runs)
-				})
-		});
+  return prefilter(['--env', 'grep-filter=spec.js,grep=does A'])
+    .then(() => {
+      cypress
+        .run({
+          config: {
+            video: false,
+            videoUploadOnPasses: false,
+            pluginsFile: path.join(__dirname, 'plugin-does-grep.js')
+          },
+          configFile: 'cypress-grep.json'
+        })
+        .then(R.prop('runs'))
+        .then(runs => {
+          console.log(runs);
+          la(runs.length === 1, 'expected one spec', runs)
+        })
+    });
 
 });
 
 it('prevents specs running at all using the prefilter', () => {
-	return prefilter(['--env', 'grep-filter=spec.js,grep=A|B'])
-		.then(() => {
-			cypress
-				.run({
-					config: {
-						video: false,
-						videoUploadOnPasses: false,
-						pluginsFile: path.join(__dirname, 'plugin-does-grep.js')
-					},
-					configFile: 'cypress-grep.json'
-				})
-				.then(R.prop('runs'))
-				.then(runs => {
-					console.log(runs);
-					la(runs.length === 1, 'expected one spec', runs)
-				})
-		});
+  return prefilter(['--env', 'grep-filter=spec.js,grep=A|B'])
+    .then(() => {
+      cypress
+        .run({
+          config: {
+            video: false,
+            videoUploadOnPasses: false,
+            pluginsFile: path.join(__dirname, 'plugin-does-grep.js')
+          },
+          configFile: 'cypress-grep.json'
+        })
+        .then(R.prop('runs'))
+        .then(runs => {
+          console.log(runs);
+          la(runs.length === 1, 'expected one spec', runs)
+        })
+    });
 
 });

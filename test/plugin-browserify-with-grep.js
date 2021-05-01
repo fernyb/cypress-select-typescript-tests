@@ -13,6 +13,7 @@ module.exports = (on, config) => {
   on('before:browser:launch', (browser = {}) => {
     const options = browserify.defaultOptions
     const envPreset = options.browserifyOptions.transform[1][1].presets[0]
+
     options.browserifyOptions.transform[1][1].presets[0] = [
       envPreset,
       {

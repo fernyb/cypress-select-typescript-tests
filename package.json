@@ -31,22 +31,23 @@
     "cypress": "4"
   },
   "dependencies": {
+    "@babel/preset-env": "7.4.5",
     "@cypress/browserify-preprocessor": "3.0.1",
     "babel-preset-es2015": "6.24.1",
-    "debug": "4.1.1",
+    "debug": "4.3.2",
     "falafel": "2.2.4",
     "pluralize": "8.0.0",
     "through": "2.3.8",
-    "typescript": "3.9.7"
+    "typescript": "4.2.4"
   },
   "devDependencies": {
-    "cypress": "4.11.0",
+    "cypress": "7.2.0",
     "lazy-ass": "1.6.0",
-    "mocha": "8.0.1",
+    "mocha": "8.3.2",
     "mocha-banner": "1.1.2",
     "ramda": "0.27.0",
-    "semantic-release": "17.1.1",
-    "snap-shot-it": "7.9.3"
+    "semantic-release": "17.4.2",
+    "snap-shot-it": "7.9.6"
   },
   "repository": {
     "type": "git",

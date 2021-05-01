@@ -2,9 +2,9 @@ const ts = require('typescript');
 
 const isTestBlock = name => node => {
 	return ts.SyntaxKind[node.kind] === 'ExpressionStatement' &&
-	ts.SyntaxKind[node.expression.kind] === 'CallExpression' &&
-	ts.SyntaxKind[node.expression.expression.kind] === 'Identifier' &&
-	node.expression.expression.escapedText === name
+		ts.SyntaxKind[node.expression.kind] === 'CallExpression' &&
+		ts.SyntaxKind[node.expression.expression.kind] === 'Identifier' &&
+		node.expression.expression.escapedText === name
 };
 
 const isDescribe = isTestBlock('describe')
@@ -68,7 +68,8 @@ const transformerFactory = (context) => {
 				// if one of the leaving tests doesn't at least start with
 				// this describe tree, then remove it entirely.
 				if (!leaveTests.some(lt => String(lt).startsWith(sName))) {
-					return ts.createSemicolonClassElement();
+					return ts.factory.createSemicolonClassElement();
+					// return ts.createSemicolonClassElement();
 					// return ts.createComment(`removed ${name}`);
 				}
 
@@ -78,7 +79,8 @@ const transformerFactory = (context) => {
 				const name = [...parentTree, getItsName(node)];
 
 				if (!leaveTests.some(equals(name))) {
-					return ts.createSemicolonClassElement();
+					return ts.factory.createSemicolonClassElement();
+					// return ts.createSemicolonClassElement();
 				}
 			}
 
