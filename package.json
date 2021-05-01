@@ -51,6 +51,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/fbarajas12/cypress-select-tests.git"
+    "url": "https://github.com/fernyb/cypress-select-typescript-tests.git"
   }
 }
